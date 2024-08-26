@@ -3,32 +3,14 @@
 """
 Created on Sat Aug 31 20:14:04 2019
 
-@author: Kshitij Gupta <kshitijgm@gmail.com>
+@author: Kshitij Gupta <kshitijgm@gmail.com> <- i hate the nyancat dependency dude istg
 """
 
 from bs4 import BeautifulSoup
-from shutil import which
 import requests
 import time
-import subprocess
-import sys
-
-
-def check_app(name):
-    ret = which(name) is not None
-    if not ret:
-        print('[*] command not found: {}'.format(name))
-    return ret
-
 
 def main():
-    if not check_app('nyancat'):
-        print('Please install \'nyancat\'! Exiting.')
-        sys.exit()
-    term = input('Enter your terminal cmd (Eg. deepin-terminal, konsole): ')
-    if not check_app(term):
-        sys.exit()
-
     url = 'https://android.googlesource.com/platform/manifest/+refs'
     webhookUrl = ''
 
