@@ -30,7 +30,12 @@ def main():
         sys.exit()
 
     url = 'https://android.googlesource.com/platform/manifest/+refs'
+    webhookUrl = ''
+
     matching = []
+    data = {
+
+    }
 
     while len(matching) == 0:
         print('\n[*] Checking!')
@@ -42,19 +47,17 @@ def main():
             tag_list.append(tag)
         matching = [s for s in tag_list if 'android-15' in s or 'android15' in s]
         if len(matching) > 0:
-            print('[!] ANDROID 12 IS HERE!')
-            print('[!] Result: {}'.format(matching))
+            # send an http request
+            result = requests.post(webhookUrl, json = data)
+            try:
+                result.raise_for_status()
+            except requests.exceptions.HTTPError as err:
+                print(err)
+            else:
+                print(f"Payload delivered successfully, code {result.status_code}.")
         else:
-            print('[*] No Android 12 (yet) 😕')
-            print('[*] Sleep time! 😴')
+            print('Still no Androd 15 :(')
             time.sleep(10 * 60)  # Wait for 10 minutes
-    try:
-        from subprocess import DEVNULL
-    except ImportError:
-        import os
-        DEVNULL = open(os.devnull, 'wb')
-    subprocess.Popen([term, '-e', 'nyancat'], stdout=DEVNULL, stderr=subprocess.STDOUT)
-
 
 if __name__ == '__main__':
     main()
