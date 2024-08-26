@@ -29,7 +29,6 @@ def main():
             tag_list.append(tag)
         matching = [s for s in tag_list if 'android-15' in s or 'android15' in s]
         if len(matching) > 0:
-            # send an http request
             result = requests.post(webhookUrl, json = data)
             try:
                 result.raise_for_status()
@@ -39,7 +38,7 @@ def main():
                 print(f"Payload delivered successfully, code {result.status_code}.")
         else:
             print('Still no Androd 15 :(')
-            time.sleep(10 * 60)  # Wait for 10 minutes
+            time.sleep(10 * 60)
 
 if __name__ == '__main__':
     main()
