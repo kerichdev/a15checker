@@ -16,7 +16,9 @@ def main():
 
     matching = []
     data = {
-
+        "content": "AOPS 15 IS OUT @dgigantino @dgigantino @dgigantino @dgigantino @dgigantino @dgigantino @dgigantino @dgigantino @dgigantino @dgigantino @dgigantino @dgigantino @dgigantino @dgigantino @dgigantino @dgigantino",
+        "embeds": "null",
+        "attachments": []
     }
 
     while len(matching) == 0:
@@ -38,7 +40,7 @@ def main():
                 print(f"Payload delivered successfully, code {result.status_code}.")
         else:
             print('Still no Androd 15 :(')
-            time.sleep(10 * 60)
+            time.sleep(60)
 
 if __name__ == '__main__':
     main()
